@@ -106,7 +106,6 @@ int print_integer(va_list args)
 int _printf(const char *format, ...)
 {
 	int print = 0;
-	char to_write[2] = {'%', *format};
 	va_list args;
 
 	if (format == NULL)
@@ -138,7 +137,8 @@ int _printf(const char *format, ...)
 				print += print_integer(args);
 			else
 			{
-				write(1, to_write, 2);
+				write(1, "%", 1);
+				write(1, format, 1);
 				print += 2;
 			}
 		}
