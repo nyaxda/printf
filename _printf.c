@@ -105,7 +105,7 @@ int print_integer(va_list args)
  */
 int _printf(const char *format, ...)
 {
-	int print = 0, prev = 0;
+	int print = 0;
 	va_list args;
 
 	if (format == NULL)
@@ -113,15 +113,10 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 	while (*format)
 	{
-		if (*format != '%' || prev)
+		if (*format != '%' || *(format - 1) == '%' || (*format++, *format == '\0' ))
 		{
-			if (write(1, format, 1) == -1)
-			{
-				va_end(args);
-				return (-1);
-			}
+			write(1, format, 1);
 			print++;
-			prev = 0;
 		}
 		else
 		{
