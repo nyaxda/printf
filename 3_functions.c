@@ -9,10 +9,15 @@
  */
 int print_unsigned_integer(va_list args)
 {
-    int h = va_arg(args, unsigned int);
-    int i = 0, temp = h, size = 0, len;
+	unsigned int h = va_arg(args, unsigned int), temp = h;
+	int i, size = 0, len;
 	char *s;
 
+	if (h == 0)
+	{
+		write(1, "0", 1);
+		return (1);
+	}
 	while (temp != 0)
 	{
 		temp /= 10;
@@ -33,12 +38,13 @@ int print_unsigned_integer(va_list args)
 	s[i] = '\0';
 	while (size > 0)
 	{
-		s[--i] = h % 10 + '0';
+		i--;
+		s[i] = (h % 10) + '0';
 		h /= 10;
 		size--;
 	}
 	len = strlen(s);
-	if (write(1, s, len) == -1)
+	if (write(1, s, len ) == -1)
 	{
 		free(s);
 		return (0);
