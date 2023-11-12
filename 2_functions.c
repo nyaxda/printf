@@ -20,7 +20,7 @@ int print_bin_helper (unsigned int n)
 	}
 	else
 	{
-		i += print_bin(n / 2);
+		i += print_bin_helper(n / 2);
 		c = (n % 2) + '0';
 		write(1, &c, 1);
 		return (i + 1);
