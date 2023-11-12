@@ -115,27 +115,21 @@ int _printf(const char *format, ...)
 	{
 		if (*format != '%' || *(format - 1) == '%')
 		{
-			if (write(1, format, 1) == -1)
+			if (write(1, format++, 1) == -1)
 			{
 				va_end(args);
 				return (-1);
 			}
 			print++;
 		}
-		else
+		else if (*(++format) != '\0')
 		{
-			format++;
-			if (*format == '\0')
-				break;
-			if (*format == 'c')
-				print += print_character(args);
-			else if (*format == 's')
-				print += print_string(args);
-			else if (*format == '%')
-				print += print_percent(args);
-			else if (*format == 'd' || *format == 'i')
-				print += print_integer(args);
-			else
+			print += (*format == 'c') ? print_character(args) :
+				(*format == 's') ? print_string(args) :
+				(*format == '%') ? print_percent(args) :
+				((*format == 'd' || *format == 'i') ? print_integer(args) : 0);
+			if (*format != 'c' && *format != 's' && *format != 'd' &&
+			    *format != 'i' && *format != '%')
 			{
 				write(1, "%", 1);
 				write(1, format, 1);
