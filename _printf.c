@@ -58,7 +58,7 @@ int print_integer(va_list args)
 {
 	int h = va_arg(args, int), i = 0, temp = h, size = 0, len;
 	int is_negative = h < 0 ? 1 : 0, extra_space = (h < 0) ? 1 : 0;
-	char *s, to_write[2] = {'%', *format};
+	char *s;
 
 	while (temp != 0)
 	{
@@ -106,6 +106,7 @@ int print_integer(va_list args)
 int _printf(const char *format, ...)
 {
 	int print = 0;
+	char to_write[2] = {'%', *format};
 	va_list args;
 
 	if (format == NULL)
