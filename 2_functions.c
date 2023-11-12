@@ -10,6 +10,7 @@
 int print_bin(va_list args)
 {
 	unsigned int n = va_arg(args, unsigned int);
+
 	return (print_bin_helper(n));
 }
 /**
