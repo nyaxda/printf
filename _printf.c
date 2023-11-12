@@ -55,8 +55,8 @@ int print_percent(va_list args)
  */
 int print_integer(va_list args)
 {
-	int h = va_arg(args, int), i = 0, temp = h, size = 0, j, len, is_negative;
-	ssize_t bytes;
+	int h = va_arg(args, int), i = 0, temp = h, size = 0, j, len;
+	int is_negative = h < 0 ? 1 : 0, extra_space = (h < 0) ? 1 : 0;
 	char *s;
 
 	while (temp != 0)
@@ -65,45 +65,30 @@ int print_integer(va_list args)
 		size++;
 	}
 
-	s = malloc((size + 2) * sizeof(char));
+	s = malloc((size + extra_space + 1) * sizeof(char));
 	if (s == NULL)
 	{
 		return (0);
 	}
-	if (h < 0)
-	{
+	if (is_negative)
 		h = -h;
-		is_negative = 1;
-	}
 	else if (h == 0)
 	{
 		write(1, "0", 1);
 		free(s);
 		return (1);
 	}
+	i = size + extra_space;
+	s[i] = '\0';
 	while (size > 0)
 	{
-		s[i++] = h % 10 + '0';
+		s[--i] = h % 10 + '0';
 		h /= 10;
 		size--;
 	}
-	s[i] = '\0';
-	len = i;
-	for (i = 0, j = len - 1; i < j; i++, j--)
-	{
-		temp = s[i];
-		s[i] = s[j];
-		s[j] = temp;
-	}
 	if (is_negative)
-	{
-		for (i = len; i >= 0; i--)
-			s[i + 1] = s[i];
-		s[0] = '-';
-		len++;
-	}
-	bytes = write(1, s, len);
-	if (bytes == -1)
+		s[--i] = '-';
+	if (write(1, s, len) == -1)
 	{
 		free(s);
 		return (0);
