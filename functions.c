@@ -136,6 +136,10 @@ int process_format(const char **format, va_list args)
 			print += print_unsigned_integer(args);
 		else if (**format == 'o')
 			print += print_octal(args);
+		else if (**format == 'x')
+			print += print_lowercase_hexadecimal(args);
+		else if (**format == 'X')
+			print += print_uppercase_hexadecimal(args);
 		else
 		{
 			write(1, "%", 1);
