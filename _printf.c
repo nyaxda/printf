@@ -72,8 +72,9 @@ int print_integer(va_list args)
 	}
 	if (h < 0)
 	{
-		s[i++] = '-';
+		s[0] = '-';
 		h = -h;
+		i++;
 	}
 	else if (h == 0)
 	{
