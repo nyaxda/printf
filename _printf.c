@@ -55,7 +55,7 @@ int print_percent(va_list args)
  */
 int print_integer(va_list args)
 {
-	int h = va_arg(args, int), i = 0, temp = h, size = 0, j, len;
+	int h = va_arg(args, int), i = 0, temp = h, size = 0, j, len, is_negative;
 	ssize_t bytes;
 	char *s;
 
@@ -72,9 +72,8 @@ int print_integer(va_list args)
 	}
 	if (h < 0)
 	{
-		s[0] = '-';
 		h = -h;
-		i++;
+		is_negative = 1;
 	}
 	else if (h == 0)
 	{
@@ -95,6 +94,13 @@ int print_integer(va_list args)
 		temp = s[i];
 		s[i] = s[j];
 		s[j] = temp;
+	}
+	if (is_negative)
+	{
+		for (i = len; i >= 0; i--)
+			s[i + 1] = s[i];
+		s[0] = '-';
+		len++;
 	}
 	bytes = write(1, s, len);
 	if (bytes == -1)
