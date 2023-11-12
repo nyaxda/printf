@@ -10,6 +10,7 @@
 int print_character(va_list args)
 {
 	char c = va_arg(args, int);
+
 	write(1, &c, 1);
 	return (1);
 }
@@ -119,10 +120,10 @@ int _printf(const char *format, ...)
 		{
 			bytes = write(1, format, 1);
 			if (bytes == -1)
-				{
-					va_end(args);
-					return (-1);
-				}
+			{
+				va_end(args);
+				return (-1);
+			}
 			print++;
 			prev = 0;
 		}
