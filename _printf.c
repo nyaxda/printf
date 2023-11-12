@@ -113,9 +113,13 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 	while (*format)
 	{
-		if (*format != '%' || *(format - 1) == '%' || (*format++, *format == '\0' ))
+		if (*format != '%' || *(format - 1) == '%')
 		{
-			write(1, format, 1);
+			if (write(1, format, 1) == -1)
+			{
+				va_end(args);
+				return (-1);
+			}
 			print++;
 		}
 		else
