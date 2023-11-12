@@ -64,7 +64,6 @@ int print_integer(va_list args)
 		temp /= 10;
 		size++;
 	}
-
 	s = malloc((size + extra_space + 1) * sizeof(char));
 	if (s == NULL)
 	{
