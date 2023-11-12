@@ -134,6 +134,8 @@ int process_format(const char **format, va_list args)
 			print += print_bin(args);
 		else if (**format == 'u')
 			print += print_unsigned_integer(args);
+		else if (**format == 'o')
+			print += print_octal(args);
 		else
 		{
 			write(1, "%", 1);
