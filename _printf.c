@@ -115,7 +115,7 @@ int _printf(const char *format, ...)
 	{
 		if (*format != '%' || *(format - 1) == '%')
 		{
-			if (write(1, format++, 1) == -1)
+			if (write(1, format, 1) == -1)
 			{
 				va_end(args);
 				return (-1);
