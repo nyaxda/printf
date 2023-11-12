@@ -122,7 +122,7 @@ int process_format(const char **format, va_list args)
 		(*format)++;
 		if (**format == '\0')
 			break;
-		else if (**format == 'c')
+		if (**format == 'c')
 			print += print_character(args);
 		else if (**format == 's')
 			print += print_string(args);
