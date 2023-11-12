@@ -107,19 +107,15 @@ int _printf(const char *format, ...)
 {
 	int print = 0, prev = 0;
 	va_list args;
-	ssize_t bytes;
 
 	if (format == NULL)
 		return (-1);
-
 	va_start(args, format);
-
 	while (*format)
 	{
 		if (*format != '%' || prev)
 		{
-			bytes = write(1, format, 1);
-			if (bytes == -1)
+			if (write(1, format, 1) == -1)
 			{
 				va_end(args);
 				return (-1);
