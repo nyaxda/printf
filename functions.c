@@ -130,7 +130,9 @@ int process_format(const char **format, va_list args)
 			print += print_percent(args);
 		else if (**format == 'd' || **format == 'i')
 			print += print_integer(args);
-		else
+		else if (**format == 'b')
+            print += print_bin(args);
+        else            
 		{
 			write(1, "%", 1);
 			write(1, *format, 1);

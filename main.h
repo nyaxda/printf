@@ -10,5 +10,6 @@ int print_string(va_list args);
 int print_percent(va_list args);
 int print_integer(va_list args);
 int process_format(const char **format, va_list args);
+int bin (unsigned n);
 
 #endif /*_MAIN_H*/
