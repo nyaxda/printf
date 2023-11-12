@@ -99,16 +99,16 @@ int print_integer(va_list args)
 }
 /**
  * process_format - checks if format is valid
- * 
+ *
  * @format: format string
- * @va_list args: list of arguments
+ * @args: list of arguments
  * Return: number of characters printed
 */
 int process_format(const char **format, va_list args)
 {
 	int print = 0;
 
-	if(**format != '%' || *(*format - 1) == '%')
+	if (**format != '%' || *(*format - 1) == '%')
 	{
 		if (write(1, *format, 1) == -1)
 		{
@@ -121,7 +121,7 @@ int process_format(const char **format, va_list args)
 	{
 		(*format)++;
 		if (**format == '\0')
-			return(print);
+			return (print);
 		if (**format == 'c')
 			print += print_character(args);
 		else if (**format == 's')
