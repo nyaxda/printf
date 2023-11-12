@@ -55,7 +55,7 @@ int print_percent(va_list args)
  */
 int print_integer(va_list args)
 {
-	int h = va_arg(args, int), i = 0, temp = h, size = 0, j, len;
+	int h = va_arg(args, int), i = 0, temp = h, size = 0, len;
 	int is_negative = h < 0 ? 1 : 0, extra_space = (h < 0) ? 1 : 0;
 	char *s;
 
@@ -88,6 +88,7 @@ int print_integer(va_list args)
 	}
 	if (is_negative)
 		s[--i] = '-';
+	len = _strlen(s);
 	if (write(1, s, len) == -1)
 	{
 		free(s);
