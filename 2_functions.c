@@ -2,10 +2,23 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include "main.h"
-
-int print_bin (va_list args)
+/**
+ * print_bin - prints a binary
+ * @args: binary to print
+ * Return: number of characters printed
+*/
+int print_bin(va_list args)
 {
 	unsigned int n = va_arg(args, unsigned int);
+	return (print_bin_helper(n));
+}
+/**
+ * print_bin_helper - prints a binary
+ * @n: integer to print
+ * Return: number of characters printed
+ */
+int print_bin_helper (unsigned int n)
+{
 	char c;
 	int i = 0;
 
