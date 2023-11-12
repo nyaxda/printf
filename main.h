@@ -9,6 +9,6 @@ int print_character(va_list args);
 int print_string(va_list args);
 int print_percent(va_list args);
 int print_integer(va_list args);
-int process_format(const chat **format, va_list args);
+int process_format(const char **format, va_list args);
 
 #endif /*_MAIN_H*/

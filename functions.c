@@ -104,7 +104,7 @@ int print_integer(va_list args)
  * @va_list args: list of arguments
  * Return: number of characters printed
 */
-int process_format(const chat **format, va_list args)
+int process_format(const char **format, va_list args)
 {
 	int print = 0;
 
