@@ -9,7 +9,7 @@
  */
 int print_unsigned_integer(va_list args)
 {
-    int h = va_arg(arg, unsigned int);
+    int h = va_arg(args, unsigned int);
     int i = 0, temp = h, size = 0, len;
 	char *s;
 
