@@ -19,7 +19,7 @@ int _printf(const char *format, ...)
 	while (*format)
 	{
 		int result = process_format(&format, args);
-		if (result == -1);
+		if (result == -1)
 		{
 			va_end(args);
 			return (-1);
