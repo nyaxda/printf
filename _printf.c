@@ -88,7 +88,7 @@ int print_integer(va_list args)
 	}
 	if (is_negative)
 		s[--i] = '-';
-	len = _strlen(s);
+	len = strlen(s);
 	if (write(1, s, len) == -1)
 	{
 		free(s);
