@@ -101,7 +101,7 @@ int print_octal(va_list args)
  * @args: hexadecimal to print
  * Return: number of characters printed
  */
-int print_uppercase_hexadecimal(var_list args)
+int print_uppercase_hexadecimal(va_list args)
 {
 	unsigned int n = va_arg(args, unsigned int);
 	unsigned int temp = n;
@@ -144,7 +144,7 @@ int print_uppercase_hexadecimal(var_list args)
  * @args: hexadecimal to print
  * Return: number of characters printed
 */
-int print_lowercase_hexadecimal(var_list args)
+int print_lowercase_hexadecimal(va_list args)
 {
 	unsigned int n = va_arg(args, unsigned int);
 	unsigned int temp = n;
