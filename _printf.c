@@ -122,14 +122,19 @@ int _printf(const char *format, ...)
 			}
 			print++;
 		}
-		else if (*(++format) != '\0')
+		else
 		{
-			print += (*format == 'c') ? print_character(args) :
-				(*format == 's') ? print_string(args) :
-				(*format == '%') ? print_percent(args) :
-				((*format == 'd' || *format == 'i') ? print_integer(args) : 0);
-			if (*format != 'c' && *format != 's' && *format != 'd' &&
-			    *format != 'i' && *format != '%')
+			if (*format == '\0')
+				break;
+			if (*format == 'c')
+				print += print_character(args);
+			else if (*format == 's')
+				print += print_string(args);
+			else if (*format == '%')
+				print += print_percent(args);
+			else if (*format == 'd' || *format == 'i')
+				print += print_integer(args);
+			else
 			{
 				write(1, "%", 1);
 				write(1, format, 1);
