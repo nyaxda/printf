@@ -98,6 +98,26 @@ int print_integer(va_list args)
 	return (len);
 }
 /**
+ * additional_process_format - checks if format is valid
+ *
+ * @format: format string
+ * @args: list of arguments
+ * @print: number of characters printed
+ * Return: number of characters printed
+*/
+int additional_process_format(const char **format, va_list args, int print)
+{
+	if (**format == 'S')
+		print += print_custom_string(args);
+	else
+		{
+			write(1, "%", 1);
+			write(1, *format, 1);
+			print += 2;
+		}
+	return print;
+}
+/**
  * process_format - checks if format is valid
  *
  * @format: format string
@@ -147,19 +167,3 @@ int process_format(const char **format, va_list args)
 	}
 	return (print);
 }
-int additional_process_format(const char **format, va_list args, int print)
-{
-
-	else
-		{
-			write(1, "%", 1);
-			write(1, *format, 1);
-			print += 2;
-		}
-	return print;
-}
-
-
-
-
-
