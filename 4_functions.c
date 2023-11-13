@@ -53,3 +53,48 @@ int print_custom_string(va_list args)
 	}
 	return (len);
 }
+
+/**
+ * print_p - prints a pointer address
+ * @args: pointer address to print
+ * Return: number of characters printed
+*/
+int print_p(va_list args)
+{
+	unsigned long int p = va_arg(args, unsigned long int);
+	unsigned long int temp = p;
+	int size = 0;
+	char *s;
+	int i;
+
+	if (p == 0)
+	{
+		write(1, "(nil)", 5);
+		return 5;
+	}
+
+	while (temp != 0)
+	{
+		temp /= 16;
+		size++;
+	}
+
+	s = malloc(size + 1);
+	if (s == NULL)
+	{
+		return 0;
+	}
+
+	s[size] = '\0';
+	for (i = size - 1; i >= 0; i--)
+	{
+		s[i] = "0123456789abcdef"[p % 16];
+		p /= 16;
+	}
+
+	i = write(1, "0x", 2);
+	i += write(1, s, size);
+	free(s);
+
+	return i;
+}
