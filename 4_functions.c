@@ -35,7 +35,7 @@ int print_custom_string(va_list args)
 	{
 		return (0);
 	}
-	while (*s != '\0' && *s != '\n')
+	while (*s != '\0')
 	{
 		if (*s < 32 || *s >= 127)
 		{
