@@ -131,7 +131,7 @@ int print_uppercase_hexadecimal(va_list args)
 	for (i = size - 1; i >= 0; i--)
 	{
 		s[i] = "0123456789ABCDEF"[n % 16];
-        n /= 16;
+		n /= 16;
 	}
 
 	i = write(1, s, size);
@@ -174,7 +174,7 @@ int print_lowercase_hexadecimal(va_list args)
 	for (i = size - 1; i >= 0; i--)
 	{
 		s[i] = "0123456789abcdef"[n % 16];
-        n /= 16;
+		n /= 16;
 	}
 
 	i = write(1, s, size);
