@@ -142,10 +142,24 @@ int process_format(const char **format, va_list args)
 			print += print_uppercase_hexadecimal(args);
 		else
 		{
-			write(1, "%", 1);
-			write(1, *format, 1);
-			print += 2;
+			print = additional_process_format(format, args, print);
 		}
 	}
 	return (print);
 }
+int additional_process_format(const char **format, va_list args, int print)
+{
+
+	else
+		{
+			write(1, "%", 1);
+			write(1, *format, 1);
+			print += 2;
+		}
+	return print;
+}
+
+
+
+
+
