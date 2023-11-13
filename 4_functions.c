@@ -98,3 +98,29 @@ int print_p(va_list args)
 
 	return i;
 }
+
+/**
+ * print_r - prints reversed string
+ * @args: string to print
+ * Return: number of characters printed
+*/
+int print_r(va_list args)
+{
+	char *s = va_arg(args, char *);
+	int len = 0;
+
+	if (s == NULL)
+	{
+		return (0);
+	}
+	while (s[len] != '\0')
+	{
+		len++;
+	}
+	for (int i = len - 1; i >= 0; i--)
+	{
+		write(1, &s[i], 1);
+	}
+
+	return len;
+}
