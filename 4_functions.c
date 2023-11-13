@@ -12,6 +12,7 @@
 void print_char_as_hex(unsigned char c)
 {
 	char *hex_digits = "0123456789ABCDEF";
+
 	write(1, &hex_digits[c / 16], 1);
 	write(1, &hex_digits[c % 16], 1);
 }
@@ -39,7 +40,7 @@ int print_custom_string(va_list args)
 	{
 		if (*s < 32 || *s >= 127)
 		{
-			write (1, "\\x", 2);
+			write(1, "\\x", 2);
 			print_char_as_hex((unsigned char)*s);
 			len += 4;
 
