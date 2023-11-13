@@ -44,7 +44,7 @@ int print_unsigned_integer(va_list args)
 		size--;
 	}
 	len = strlen(s);
-	if (write(1, s, len ) == -1)
+	if (write(1, s, len) == -1)
 	{
 		free(s);
 		return (0);
@@ -69,7 +69,7 @@ int print_octal(va_list args)
 	if (n == 0)
 	{
 		write(1, "0", 1);
-		return 1;
+		return (1);
 	}
 
 	while (temp != 0)
@@ -81,7 +81,7 @@ int print_octal(va_list args)
 	s = malloc(size + 1);
 	if (s == NULL)
 	{
-		return 0;
+		return (0);
 	}
 
 	s[size] = '\0';
@@ -94,7 +94,7 @@ int print_octal(va_list args)
 	i = write(1, s, size);
 	free(s);
 
-	return i;
+	return (i);
 }
 /**
  * print_uppercase_hexadecimal - prints an uppercase hexadecimal
@@ -124,7 +124,7 @@ int print_uppercase_hexadecimal(va_list args)
 	s = malloc(size + 1);
 	if (s == NULL)
 	{
-		return 0;
+		return (0);
 	}
 
 	s[size] = '\0';
@@ -137,7 +137,7 @@ int print_uppercase_hexadecimal(va_list args)
 	i = write(1, s, size);
 	free(s);
 
-	return i;
+	return (i);
 }
 /**
  * print_lower_hexadecimal - prints a hexadecimal in lowercase
@@ -155,7 +155,7 @@ int print_lowercase_hexadecimal(va_list args)
 	if (n == 0)
 	{
 		write(1, "0", 1);
-		return 1;
+		return (1);
 	}
 
 	while (temp != 0)
@@ -167,7 +167,7 @@ int print_lowercase_hexadecimal(va_list args)
 	s = malloc(size + 1);
 	if (s == NULL)
 	{
-		return 0;
+		return (0);
 	}
 
 	s[size] = '\0';
@@ -180,5 +180,5 @@ int print_lowercase_hexadecimal(va_list args)
 	i = write(1, s, size);
 	free(s);
 
-	return i;
+	return (i);
 }
