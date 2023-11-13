@@ -122,5 +122,54 @@ int print_r(va_list args)
 		write(1, &s[i], 1);
 	}
 
-	return len;
+	return (len);
+}
+
+/**
+ * print_integer - prints an integer
+ * @args: integer to print
+ * Return: number of characters printed
+ */
+int print_integer(va_list args)
+{
+	int h = va_arg(args, int), i = 0, temp = h, size = 0, len;
+	int is_negative = h < 0 ? 1 : 0, extra_space = (h < 0) ? 1 : 0;
+	char *s;
+
+	while (temp != 0)
+	{
+		temp /= 10;
+		size++;
+	}
+	s = malloc((size + extra_space + 1) * sizeof(char));
+	if (s == NULL)
+	{
+		return (0);
+	}
+	if (is_negative)
+		h = -h;
+	else if (h == 0)
+	{
+		write(1, "0", 1);
+		free(s);
+		return (1);
+	}
+	i = size + extra_space;
+	s[i] = '\0';
+	while (size > 0)
+	{
+		s[--i] = h % 10 + '0';
+		h /= 10;
+		size--;
+	}
+	if (is_negative)
+		s[--i] = '-';
+	len = strlen(s);
+	if (write(1, s, len) == -1)
+	{
+		free(s);
+		return (0);
+	}
+	free(s);
+	return (len);
 }
