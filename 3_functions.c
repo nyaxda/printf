@@ -3,6 +3,18 @@
 #include <stdlib.h>
 #include "main.h"
 /**
+ * write_zero_and_free - writes a zero and frees a string
+ * @s: string to free
+ * Return: number of characters printed
+*/
+int write_zero_and_free(char *s)
+{
+    write(1, "0", 1);
+    free(s);
+    return 1;
+}
+
+/**
  * print_unsigned_integer - prints an unsigned integer
  * @args: unsigned integer to print
  * Return: number of characters printed
@@ -30,9 +42,7 @@ int print_unsigned_integer(va_list args)
 	}
 	if (h == 0)
 	{
-		write(1, "0", 1);
-		free(s);
-		return (1);
+		write_zero_and_free(s);
 	}
 	i = size;
 	s[i] = '\0';
@@ -112,7 +122,7 @@ int print_uppercase_hexadecimal(va_list args)
 	if (n == 0)
 	{
 		write(1, "0", 1);
-		return 1;
+		return (1);
 	}
 
 	while (temp != 0)
