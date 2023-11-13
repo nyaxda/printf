@@ -111,6 +111,8 @@ int additional_process_format(const char **format, va_list args, int print)
 		print += print_custom_string(args);
 	else if (**format == 'p')
 		print += print_p(args);
+	else if (**format == 'r')
+		print += print_r(args);
 	else
 		{
 			write(1, "%", 1);

@@ -17,4 +17,5 @@ int print_uppercase_hexadecimal(va_list args);
 int print_lowercase_hexadecimal(va_list args);
 int print_custom_string(va_list args);
 int print_p(va_list args);
+int print_r(va_list args);
 #endif /*_MAIN_H*/
