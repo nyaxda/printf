@@ -4,16 +4,16 @@
 #include "main.h"
 /**
  * print_char_hex - prints a character in uppercase hexadecimal
- * 
+ *
  * @c: character to print
- * 
+ *
  * Return: number of characters printed
  */
 void print_char_as_hex(unsigned char c)
 {
-    char *hex_digits = "0123456789ABCDEF";
-    write(1, &hex_digits[c / 16], 1);
-    write(1, &hex_digits[c % 16], 1);
+	char *hex_digits = "0123456789ABCDEF";
+	write(1, &hex_digits[c / 16], 1);
+	write(1, &hex_digits[c % 16], 1);
 }
 
 /**
@@ -70,7 +70,7 @@ int print_p(va_list args)
 	if (p == 0)
 	{
 		write(1, "(nil)", 5);
-		return 5;
+		return (5);
 	}
 
 	while (temp != 0)
@@ -82,7 +82,7 @@ int print_p(va_list args)
 	s = malloc(size + 1);
 	if (s == NULL)
 	{
-		return 0;
+		return (0);
 	}
 
 	s[size] = '\0';
@@ -96,7 +96,7 @@ int print_p(va_list args)
 	i += write(1, s, size);
 	free(s);
 
-	return i;
+	return (i);
 }
 
 /**
