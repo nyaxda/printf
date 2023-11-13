@@ -7,7 +7,7 @@
  * @n: integer to print
  * Return: number of characters printed
  */
-int print_bin_helper (unsigned int n)
+int print_bin_helper(unsigned int n)
 {
 	char c;
 	int i = 0;
