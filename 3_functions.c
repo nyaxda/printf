@@ -150,7 +150,7 @@ int print_uppercase_hexadecimal(va_list args)
 	return (i);
 }
 /**
- * print_lower_hexadecimal - prints a hexadecimal in lowercase
+ * print_lowercase_hexadecimal - prints a hexadecimal in lowercase
  * @args: hexadecimal to print
  * Return: number of characters printed
 */
