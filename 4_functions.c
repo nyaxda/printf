@@ -23,7 +23,7 @@ void print_char_as_hex(unsigned char c)
  * Description: prints a string except for non-printable characters.
  * The non-printable characters are printed as \x followed by their ASCII code
  *
- * @S: string to print
+ * @args: string to print
  *
  * Return: number of characters printed
  */
