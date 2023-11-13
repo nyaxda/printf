@@ -9,9 +9,9 @@
 */
 int write_zero_and_free(char *s)
 {
-    write(1, "0", 1);
-    free(s);
-    return 1;
+	write(1, "0", 1);
+	free(s);
+	return 1;
 }
 
 /**
